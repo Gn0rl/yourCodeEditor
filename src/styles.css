@@ -1,0 +1,38 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color: #FFF;
+  background-color: #303030;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+.container {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.number {
+  color:#747bff;
+}
+
+.tag-atributes {
+  color: #acb1ff;
+}
+
+.param {
+  color:chartreuse;
+}
+
+.string { 
+  color:rgb(228, 145, 85);
+}
