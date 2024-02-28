@@ -1,6 +1,6 @@
 <div>
   <main class="container">
-
+    
     <div id="in" on:input={()=>{
         const input = document.getElementById("in");
         if(input) {
@@ -9,15 +9,14 @@
           let a = document.createElement('text')
           a.textContent = arr.join('\n')
           const out = document.getElementById('out')
-          
+        
           if(out){
             out.replaceChildren(getColorised(input.innerText))
             // out.innerHTML =  arr.map(a => a.split('').map(b => b === "<" ? `<span class="number">${b}</span>` : b).join('')).join('\n');
           }
         }
-    }
-  } contenteditable="plaintext-only" class="input"></div>
-  
+      }
+    } contenteditable="plaintext-only" class="input"></div>    
     <div inert  id="out"></div>
   
   </main>
@@ -106,7 +105,6 @@
         tagHighlights[j + (opensDecloration[i].index || 0)] = "tag-declaration"
       }
     }
-
 
     let a = document.createElement('div')
 
