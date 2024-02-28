@@ -21,7 +21,7 @@
   justify-content: center;
 }
 
-.number {
+.tag-htmlStyleTag {
   color:#747bff;
 }
 
@@ -30,9 +30,17 @@
 }
 
 .param {
-  color:chartreuse;
+  color:rgb(209, 141, 248);
 }
 
 .string { 
   color:rgb(228, 145, 85);
+}
+ 
+.tag-variable {
+  color: rgb(146, 146, 231);
+}
+
+.tag-declaration { 
+  color: #4c51c0;
 }
