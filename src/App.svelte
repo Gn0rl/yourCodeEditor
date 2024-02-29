@@ -1,6 +1,5 @@
 <div>
   <main class="container">
-    
     <div id="in" on:input={()=>{
         const input = document.getElementById("in");
         if(input) {
@@ -18,7 +17,6 @@
       }
     } contenteditable="plaintext-only" class="input"></div>    
     <div inert  id="out"></div>
-  
   </main>
 </div>
 <style>
@@ -59,11 +57,7 @@
     const varReg = /var /gm
     const letReg = /let /gm
 
-    const opensString = [...str.matchAll(openStringReg)]
     const opensTag = [...str.matchAll(openTagReg)]
-    const opensparam = [...str.matchAll(paramReg)]
-    const opensConstVariable = [...str.matchAll(constVariableReg)]
-    const opensDecloration = [...str.matchAll(constReg), ...str.matchAll(varReg), ...str.matchAll(letReg)]
 
     const tagHighlights = new Array;
 
@@ -72,50 +66,40 @@
       if(opensTag[i][0][1] !== '/'){
         for(let j = 1; j < opensTag[i][0].length-1; j++){
           if(opensTag[i][0][j] === " ") isTagName = false;
-          if(isTagName) tagHighlights[j + (opensTag[i].index || 0)] = "tag-htmlStyleTag"
-          else if(opensTag[i][0][j] !== "=") tagHighlights[j + (opensTag[i].index || 0)] = "tag-atributes"
+          if(isTagName) tagHighlights[j + (opensTag[i].index || 0)] = "#747bff"
+          else if(opensTag[i][0][j] !== "=") tagHighlights[j + (opensTag[i].index || 0)] = "#acb1ff"
         }
       } else {
         for(let j = 2; j < opensTag[i][0].length-1; j++){
-          tagHighlights[j + (opensTag[i].index || 0)] = "tag-htmlStyleTag"
+          tagHighlights[j + (opensTag[i].index || 0)] = "#747bff"
         }
       }
     }
 
-    for(let i = 0; i < opensString.length; i++){
-      for(let j = 0; j < opensString[i][0].length; j++){
-        tagHighlights[j + (opensString[i].index || 0)] = "string"
-      }
-    }
-
-    for(let i = 0; i < opensparam.length; i++){  
-      for(let j = 0; j < opensparam[i][0].length; j++){
-        tagHighlights[j + (opensparam[i].index || 0)] = "param"
-      }
-    }
-
-    for(let i = 0; i < opensConstVariable.length; i++){  
-      for(let j = 0; j < opensConstVariable[i][0].length; j++){
-        tagHighlights[j + (opensConstVariable[i].index || 0)] = "tag-variable"
-      }
-    }
-
-    for(let i = 0; i < opensDecloration.length; i++){  
-      for(let j = 0; j < opensDecloration[i][0].length; j++){
-        tagHighlights[j + (opensDecloration[i].index || 0)] = "tag-declaration"
-      }
-    }
+    createHighlight(paramReg, "rgb(209, 141, 248)", str, tagHighlights);
+    createHighlight(constVariableReg, "rgb(146, 146, 231)", str, tagHighlights);
+    createHighlight(constReg, "#4c51c0", str, tagHighlights);
+    createHighlight(openStringReg, "rgb(228, 145, 85)", str, tagHighlights);
 
     let a = document.createElement('div')
 
     for(let i = 0; i < str.length; i++) {
       if(tagHighlights[i]) {
-        a.innerHTML += `<span class="${tagHighlights[i]}">${str[i]}</span>`
+        a.innerHTML += `<span style="color: ${tagHighlights[i]}">${str[i]}</span>`
       } else {
         a.innerHTML += str[i];
       }
     }
     
     return a;
+  }
+
+  function createHighlight(reg: RegExp, color: string, str: string, tagHighlights: Array<string>) {
+    const findToHighlight = [...str.matchAll(reg)]
+    for(let i = 0; i < findToHighlight.length; i++){  
+      for(let j = 0; j < findToHighlight[i][0].length; j++){
+        tagHighlights[j + (findToHighlight[i].index || 0)] = color
+      }
+    }
   }
 </script>
