@@ -75,6 +75,7 @@
         }
       }
     }
+    
 
     createHighlight(paramReg, "rgb(209, 141, 248)", str, tagHighlights);
     createHighlight(constVariableReg, "rgb(146, 146, 231)", str, tagHighlights);
