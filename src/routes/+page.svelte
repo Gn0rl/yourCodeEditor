@@ -1,1 +1,0 @@
-<a href="/editor">go to editor</a>
