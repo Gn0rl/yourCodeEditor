@@ -1,7 +1,8 @@
 <div class="container">
 <header class="leftPanel">
-    <a href="/">M</a>
-    <a href="/editor">E</a>
+    <a class="pageLink" href="/"><p style="margin-top: auto; margin-bottom: auto;">N</p></a>
+    <a class="pageLink" href="/editor"><p style="margin-top: auto; margin-bottom: auto;">E</p></a>
+    <a class="pageLink" href="/custom"><p style="margin-top: auto; margin-bottom: auto;">C</p></a>
 </header>
 <div class="content">
     <slot></slot>
@@ -10,6 +11,24 @@
 </div>
 
 <style>
+    .pageLink {
+        
+        display: flex;
+        border-bottom: 1px solid #fff;
+        text-decoration: none;
+        color: #fff;
+        height:100%;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        transition: 200ms;
+    }
+
+    .pageLink:hover {
+        background-color: #333;
+    }
+
+
     .content {
         display: block
     }
